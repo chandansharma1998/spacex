@@ -1,5 +1,6 @@
 import {useEffect,useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
+import Loading from "./Loading"
 import Filters from "./Filters"
 import axios from 'axios'
 import { DataAction } from '../Actions';
@@ -84,15 +85,17 @@ const CardList = () => {
         }}
       >
         <TextField onChange={handleChange} fullWidth label="Enter Rocket Name" id="fullWidth" />
-        <IconButton sx={{ml:3}} sm={{ml:2}} aria-label="filter" onClick={toggleFilter}>            
-              <FilterAltIcon color='primary' fontSize='large' />           
+        <IconButton sx={{ml:3}} sm={{ml:2}} aria-label="filter"  onClick={toggleFilter}>            
+              <FilterAltIcon color='action' fontSize='large' />           
         </IconButton>
       </Box>
 
-      {showFilter && <Filters applyFilters={applyFilters}/>}
-
+      {showFilter && <Filters applyFilters={applyFilters} showFilter={showFilter}/>}
+      
       <Divider sx={{mb:3}} sm={{mb:2}} variant="middle" />
-      <Grid container spacing={{ xs: 1, sm: 2, md: 2.5 , lg : 3}} >
+      {
+        allData && allData.length ? 
+        <Grid container spacing={{ xs: 1, sm: 2, md: 2.5 , lg : 3}} >
           {fetched.map((data,i) => {
               return (
                 <Grid item xs={6} sm={4} md={3} lg={2.4}>
@@ -100,7 +103,11 @@ const CardList = () => {
                 </Grid>
               )
           })}
-      </Grid>
+        </Grid> :
+        <Loading/>
+      }
+     
+     <Divider sx={{m:3}} sm={{m:2}} variant="middle" />
     </div>
   )
 }

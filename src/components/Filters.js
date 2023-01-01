@@ -9,8 +9,9 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Grow from '@mui/material/Grow';
 
-const Filters = ({applyFilters}) => {
+const Filters = ({applyFilters,showFilter}) => {
 
     const initialValues = {
         DATE_FILTER:"ALL",
@@ -80,6 +81,7 @@ const Filters = ({applyFilters}) => {
     }
 
   return (
+    <Grow in={showFilter}>
    <Card>
     <CardContent>
     <Box  display='flex'  flexDirection= 'column'  justifyContent='space-around'>
@@ -134,6 +136,7 @@ const Filters = ({applyFilters}) => {
     </Box>
     </CardContent>
     </Card>
+    </Grow>
   )
 }
 

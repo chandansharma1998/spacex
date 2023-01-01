@@ -68,11 +68,11 @@ const Cards = ({data}) => {
             </Typography>
           </Box>
          
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography fontWeight='bold' gutterBottom variant="body2" component="div">
            Mission: {mission_name} 
           </Typography>
 
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography fontWeight='bold' gutterBottom variant="body2" component="div">
            Rocket: {rocket.rocket_name || rocket.rocket_type} 
           </Typography>
 
@@ -93,19 +93,19 @@ const Cards = ({data}) => {
 
           {links.video_link && <IconButton aria-label="youtube">
             <a href={links.video_link} target="_blank"  rel="noreferrer">
-              <YouTubeIcon color='primary' fontSize='small'/>
+              <YouTubeIcon color='action' fontSize='small'/>
             </a>
           </IconButton>}
 
           {links.wikipedia && <IconButton aria-label="wiki">
             <a href={links.wikipedia} target="_blank"  rel="noreferrer">
-              <ArticleIcon color='primary' fontSize='small' />
+              <ArticleIcon color='action' fontSize='small' />
             </a>
           </IconButton>}
 
           {links.article_link && <IconButton aria-label="article">
             <a href={links.article_link} target="_blank"  rel="noreferrer">
-              <LaunchIcon color='primary' fontSize='small' />
+              <LaunchIcon color='action' fontSize='small' />
             </a>
           </IconButton>}
           {details && <ExpandMore
