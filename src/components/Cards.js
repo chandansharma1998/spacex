@@ -50,13 +50,13 @@ const Cards = ({data}) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
+        {links.mission_patch_small && <CardMedia
           component="img"
           height="100%"
-          image={links.mission_patch_small || 'https://png.pngitem.com/pimgs/s/168-1682670_spacex-vector-logo-spacex-hd-png-download.png'}
+          image={links.mission_patch_small}
           alt="img not available"
 
-        />
+        />}
          <Divider variant="middle" />
         <CardContent>
           <Box display='flex'  justifyContent='space-between'>
