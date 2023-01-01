@@ -21,7 +21,7 @@ const CardList = () => {
      const allData = useSelector(state => state.myData)
      const dispatch = useDispatch();
 
-
+   /*eslint-disable */
     useEffect(()=>{
     axios.get(BASE_URL)
       .then(response => response.data)
@@ -31,7 +31,7 @@ const CardList = () => {
       })
       .catch(err => console.log(err))
     },[])
-
+    /*eslint-enable */
     const handleChange = e =>{
       let ip = e.target.value.toLowerCase()
       if(ip === '' || ip.trim()===''){
