@@ -34,7 +34,10 @@ const Cards = ({data}) => {
     launch_year,
     links,
     mission_name,
-    rocket
+    rocket,
+    launch_site,
+    launch_success,
+    upcoming
   } = data;
 
   const [expanded, setExpanded] = useState(false);
@@ -71,6 +74,18 @@ const Cards = ({data}) => {
 
           <Typography gutterBottom variant="body2" component="div">
            Rocket: {rocket.rocket_name || rocket.rocket_type} 
+          </Typography>
+
+          <Typography gutterBottom variant="body2" component="div">
+           Launch Site: {launch_site.site_name || "NA"} 
+          </Typography>
+
+          <Typography gutterBottom variant="body2" component="div">
+           Launch Success: {launch_success===true ? "Success" : "Failure"} 
+          </Typography>
+
+          <Typography gutterBottom variant="body2" component="div">
+           Upcoming: {upcoming===true ? "YES" : "No"} 
           </Typography>
         </CardContent>
         <Divider variant="middle" />

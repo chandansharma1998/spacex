@@ -7,6 +7,8 @@ import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 const Filters = ({applyFilters}) => {
 
@@ -78,10 +80,11 @@ const Filters = ({applyFilters}) => {
     }
 
   return (
-   
+   <Card>
+    <CardContent>
     <Box  display='flex'  flexDirection= 'column'  justifyContent='space-around'>
        
-        <FormControl>
+        <FormControl m='2'>
         <FormLabel  id="launch-date">Launch Date</FormLabel>
         <RadioGroup    
             row   
@@ -98,7 +101,7 @@ const Filters = ({applyFilters}) => {
 
         <Divider sx={{mb:3}} sm={{mb:2}} variant="middle" />
 
-        <FormControl>
+        <FormControl m='2'>
         <FormLabel id="launch-Status">Launch Status</FormLabel>
         <RadioGroup
             row
@@ -114,7 +117,7 @@ const Filters = ({applyFilters}) => {
 
         <Divider sx={{mb:3}} sm={{mb:2}} variant="middle" />
         
-        <FormControl>
+        <FormControl m='2'>
         <FormLabel id="Upcoming">Is it Upcoming?</FormLabel>
         <RadioGroup
             row
@@ -129,7 +132,8 @@ const Filters = ({applyFilters}) => {
         </FormControl>
         <Button onClick = {sendFilterValues} variant="contained">Apply Filter</Button>
     </Box>
-
+    </CardContent>
+    </Card>
   )
 }
 

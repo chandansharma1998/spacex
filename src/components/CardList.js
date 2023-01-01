@@ -7,7 +7,6 @@ import Cards from './Cards'
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
 import Divider from '@mui/material/Divider';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import IconButton from '@mui/material/IconButton';
@@ -54,12 +53,17 @@ const CardList = () => {
       let {DATE_FILTER, LAUNCH_STATUS, UPCOMING} = launchStatus;
       let requiredData = allData.filter(ele => {
 
-        let eleDate = new Date(ele.launch_date_utc).toString()
+        let eleDate = new Date(ele.launch_date_utc).getTime()
+        let compDate;
+        if(DATE_FILTER !== "ALL"){
+          compDate = new Date(DATE_FILTER).getTime()
+        }
         let launchValue = LAUNCH_STATUS === "true" ? true : false;
         let upcomingValue = UPCOMING === "true" ? true : false;
-        return ((DATE_FILTER==="ALL" || DATE_FILTER < eleDate) && (LAUNCH_STATUS==="ALL" || ele.launch_success===launchValue) && (UPCOMING==="ALL" || ele.upcoming===upcomingValue))
+        return ((DATE_FILTER==="ALL" || compDate < eleDate) && (LAUNCH_STATUS==="ALL" || ele.launch_success===launchValue) && (UPCOMING==="ALL" || ele.upcoming===upcomingValue))
 
       })
+   
       setFetched(requiredData)
     }
 
@@ -88,10 +92,10 @@ const CardList = () => {
       {showFilter && <Filters applyFilters={applyFilters}/>}
 
       <Divider sx={{mb:3}} sm={{mb:2}} variant="middle" />
-      <Grid container spacing={{ xs: 1, sm: 2, md: 3 , lg : 4}} >
+      <Grid container spacing={{ xs: 1, sm: 2, md: 2.5 , lg : 3}} >
           {fetched.map((data,i) => {
               return (
-                <Grid item xs={6} sm={3} md={2.4} lg={2}>
+                <Grid item xs={6} sm={4} md={3} lg={2.4}>
                   <Cards key={i} data={data}/>
                 </Grid>
               )
